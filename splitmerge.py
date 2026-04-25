@@ -29,16 +29,7 @@ def split_and_merge_segmentation(image):
     
 def region_predicate(region_pixels):
     rgb_mask = get_rgb_mask(region_pixels)
-    hsv_segment = cv.cvtColor(region_pixels, cv.COLOR_BGR2HSV)
-    hsv_mask = cv.inRange(hsv_segment, (0,5,15), (17,170,255))
-    hsv_mask = cv.morphologyEx(hsv_mask, cv.MORPH_OPEN, np.ones((3, 3), np.uint8))
-    ycrcb_segment = cv.cvtColor(region_pixels, cv.COLOR_BGR2YCrCb)
-    ycrcb_mask = cv.inRange(ycrcb_segment, (0,135,85), (255,180,135))
-    ycrcb_mask = cv.morphologyEx(ycrcb_mask, cv.MORPH_OPEN, np.ones((3, 3), np.uint8))
-    global_mask = cv.bitwise_and(hsv_mask, cv.bitwise_and(ycrcb_mask,rgb_mask))
-    global_mask = cv.medianBlur(global_mask, 3)
-    global_mask = cv.morphologyEx(global_mask, cv.MORPH_OPEN, np.ones((4, 4), np.uint8))
-    ratio = np.count_nonzero(global_mask) / region_pixels.shape[0]
+    ratio = np.count_nonzero(rgb_mask) / region_pixels.shape[0]
     return ratio > 0.5
 
 def get_rgb_mask(region_pixels):
