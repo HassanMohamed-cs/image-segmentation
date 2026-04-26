@@ -28,7 +28,7 @@ def DetectFaces(Img, OutPath) -> Tuple[Dict, Dict]:
             - Eyes: returned struct containing all resized faces after detecting and marking each of the left eye and right eye
     """
     detector = dl.get_frontal_face_detector()
-    predictor = dl.shape_predictor("../../Model/shape_predictor_68_face_landmarks.dat")
+    predictor = dl.shape_predictor("shape_predictor_68_face_landmarks.dat")
     kernel = np.array([[0,-1,0],
                       [-1,5,-1],
                     [0,-1,0]])

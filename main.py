@@ -3,7 +3,7 @@ import cv2 as cv
 from image_segment import SegmentHand, DetectFaces
 def Problem_1():
     case_choice = int(input("Test Case #: "))
-    input_image = cv.imread(f"../../Imgs/Prob1/{case_choice}.jpg")
+    input_image = cv.imread(f"../Imgs/Prob1/{case_choice}.jpg")
     output_image = SegmentHand(input_image)
     input_image_rgb = cv.cvtColor(input_image, cv.COLOR_BGR2RGB)
     fig, ax = plt.subplots(1, 2)
@@ -16,8 +16,8 @@ def ApplyAll(inputPaths_File, outputPath):
 
 def Problem_2():
     case_choice = int(input("Test Case #: "))
-    image = cv.imread(f"../../Imgs/Prob2/{case_choice}.jpg")
-    Faces, Eyes = DetectFaces(image, "../../Imgs/Prob2/Sample/")
+    image = cv.imread(f"../Imgs/Prob2/{case_choice}.jpg")
+    Faces, Eyes = DetectFaces(image, "../Imgs/Prob2/Sample/")
     image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
     print(Eyes)
     fig = plt.figure(figsize=(12, 6))
@@ -37,6 +37,6 @@ def Problem_2():
                loc='lower center', ncol=2)
     plt.show()
 
-
+ju
 Problem_1()
 Problem_2()
