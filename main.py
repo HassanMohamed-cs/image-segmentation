@@ -37,6 +37,5 @@ def Problem_2():
                loc='lower center', ncol=2)
     plt.show()
 
-ju
 Problem_1()
 Problem_2()
